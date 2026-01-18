@@ -1,0 +1,9 @@
+<mat-form-field>
+  <mat-label>status</mat-label>
+  <mat-select [(ngModel)]="selectedStatus" (selectionChange)="onFilterChange(selectedStatus)">
+    <mat-option [value]="">None</mat-option>
+    @for (status of statuses; track status) {
+      <mat-option [value]="status">{{status}}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>

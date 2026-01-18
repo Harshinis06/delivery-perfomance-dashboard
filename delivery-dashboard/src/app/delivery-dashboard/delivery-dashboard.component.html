@@ -1,0 +1,84 @@
+<mat-sidenav-container class="dashboard-container">
+    <!-- Sidenav for menus -->
+    <mat-sidenav mode="side" opened class="sidenav">
+        <mat-nav-list>
+            <mat-list-item (click)="selectMenu('home')">
+                <mat-icon matListIcon>home</mat-icon>
+            </mat-list-item>
+            <mat-list-item (click)="selectMenu('orders')">
+                <mat-icon matListIcon>shopping_cart</mat-icon>
+            </mat-list-item>
+            <mat-list-item (click)="selectMenu('agents')">
+                <mat-icon matListIcon>people</mat-icon>
+            </mat-list-item>
+            <mat-list-item (click)="selectMenu('reports')">
+                <mat-icon matListIcon>bar_chart</mat-icon>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <!-- Main content -->
+    <mat-sidenav-content>
+        <!-- Toolbar with user icon -->
+        <mat-toolbar color="primary" class="toolbar">
+            <span>Delivery Dashboard</span>
+            <span class="spacer"></span>
+            <button mat-icon-button>
+                <mat-icon>account_circle</mat-icon>
+            </button>
+        </mat-toolbar>
+
+
+        <!-- Content area -->
+        <div class="content">
+            <div *ngIf="selectedMenu === 'home'">
+                <h2>Home Dashboard</h2>
+                <!-- Add summary card -->
+                 <div>
+                    <app-filter [dataSource]="dataSource.data" (filteredData)="onFilteredData($event)"></app-filter>
+                 </div>
+                <div>
+                    <app-summary-card [dataSource]="dataSource" ></app-summary-card>
+                </div>
+
+                <div class="example-container mat-elevation-z8">
+                    <div class="mat-elevation-z8">
+                        <app-delivery-table [dataSource]="filteredData" [tableData]="dataSource"></app-delivery-table>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="selectedMenu !== 'home'">
+                <h2>{{ selectedMenu | titlecase }} Section</h2>
+                <p>Dummy content for {{ selectedMenu }}.</p>
+            </div>
+        </div>
+    </mat-sidenav-content>
+
+    <mat-sidenav mode="side" position="end" opened class="right-sidebar">
+        <mat-card class="chart-card">
+            <mat-card-header>
+                <mat-card-title>Delivery Status</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <canvas baseChart [type]="'pie'" [data]="{labels: pieChartLabels, datasets: pieChartData}"
+                    [options]="pieChartOptions">
+                </canvas>
+            </mat-card-content>
+
+            <mat-card-content class="spacer_chart">
+                <div class="bar-chart-container">
+                    <canvas baseChart [type]="'bar'" [data]="{ labels: barChartLabels, datasets: barChartData }"
+                        [options]="barChartOptions">
+                    </canvas>
+                </div>
+            </mat-card-content>
+
+            <mat-card-content>
+                <canvas baseChart [type]="'doughnut'" [data]="{labels: donutChartLabels, datasets: donutChartData}"
+                    [options]="donutChartOptions">
+                </canvas>
+            </mat-card-content>
+        </mat-card>
+    </mat-sidenav>
+
+</mat-sidenav-container>

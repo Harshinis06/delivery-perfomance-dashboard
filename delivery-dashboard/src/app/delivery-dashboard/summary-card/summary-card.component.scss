@@ -1,0 +1,39 @@
+// .summary-wrapper {
+//   display: flex;
+//   justify-content: center;
+// }
+.summary-card-wrapper {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.summary-card {
+    width: 200px;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.summary-header {
+    display: flex;
+    justify-content: center;
+}
+
+.summary-header mat-icon {
+    font-size: 36px;
+    color: #1976d2;
+}
+
+.summary-title {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.summary-count {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 600;
+    color: #333;
+}

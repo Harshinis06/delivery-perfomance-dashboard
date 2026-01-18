@@ -1,0 +1,34 @@
+<div class="summary-card-wrapper">
+<mat-card class="summary-card">
+    <mat-card-header class="summary-header">
+        <mat-icon mat-card-avatar>local_shipping</mat-icon>
+    </mat-card-header>
+
+    <mat-card-content class="summary-content">
+        <p class="summary-title">Total Deliveries</p>
+        <h2 class="summary-count">{{ dataSource.data.length }}</h2>
+    </mat-card-content>
+</mat-card>
+
+<mat-card class="summary-card">
+    <mat-card-header class="summary-header">
+        <mat-icon mat-card-avatar>local_shipping</mat-icon>
+    </mat-card-header>
+
+    <mat-card-content class="summary-content">
+        <p class="summary-title">On-Time Deliveries</p>
+        <h2 class="summary-count">{{ OnTimeDeliveries }}</h2>
+    </mat-card-content>
+</mat-card>
+
+<mat-card class="summary-card">
+    <mat-card-header class="summary-header">
+        <mat-icon mat-card-avatar>local_shipping</mat-icon>
+    </mat-card-header>
+
+    <mat-card-content class="summary-content">
+        <p class="summary-title">Delayed Deliveries</p>
+        <h2 class="summary-count">{{ DelayedDeliveries }}</h2>
+    </mat-card-content>
+</mat-card>
+</div>
